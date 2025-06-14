@@ -1,21 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-adsense-account" content="ca-pub-9193734213795327">
+
+
+
   <title>Little Maps</title>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9193734213795327"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 
   <style>
     /* Reset básico */
     * {
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
+
+
+    .open-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #39ff14;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 998;
+      /* Menor que a gaveta */
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100vh;
+      background: #051100ee;
+      overflow-x: hidden;
+      transition: width 0.4s ease;
+      box-shadow: -2px 0 12px rgba(0, 255, 0, 0.5);
+      padding-top: 60px;
+      z-index: 999;
+      /* A gaveta fica acima do botão */
+    }
+
+
+    .drawer.open {
+      width: 300px;
+    }
+
+    .drawer table {
+      width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      color: #d1f2d1;
+    }
+
+    .drawer th,
+    .drawer td {
+      border-bottom: 1px solid #39ff14;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #2cca00;
+      color: #000;
+      border: none;
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
 
     body {
       background: linear-gradient(135deg, #0a0a0a, #003300);
@@ -52,6 +118,7 @@
       margin-bottom: 15px;
       display: block;
     }
+
     input[type="text"]:focus {
       border-color: #7cff00;
       background: #0c1b00;
@@ -73,6 +140,7 @@
       width: 320px;
       max-width: 90vw;
     }
+
     button:hover {
       background-color: #2cca00;
       color: #e0ffe0;
@@ -88,9 +156,11 @@
       font-weight: 600;
       color: #c2ffc2;
       user-select: none;
+      border-radius: 15px;
     }
 
-    .tabela, .tabela1 {
+    .tabela,
+    .tabela1 {
       border-radius: 15px;
       border: 2px solid #39ff14;
       box-shadow: 0 0 12px #39ff14;
@@ -129,6 +199,7 @@
       transition: transform 0.3s ease;
       cursor: pointer;
     }
+
     img:hover {
       transform: scale(1.05);
       box-shadow: 0 0 40px #7fff00;
@@ -150,6 +221,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       user-select: none;
     }
+
     a.download-link:hover {
       background-color: #2baf00;
       color: #e0ffe0;
@@ -175,21 +247,89 @@
       h2 {
         font-size: 2.4rem;
       }
+
       h1 {
         font-size: 1.4rem;
       }
-      button, input[type="text"], table, img, a.download-link {
+
+      button,
+      input[type="text"],
+      table,
+      img,
+      a.download-link {
         width: 90vw;
       }
+
       footer {
         max-width: 95vw;
       }
     }
   </style>
 </head>
+
 <body>
-  <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-9193734213795327">
+  <script>
+    function toggleDrawer() {
+      document.getElementById("drawer").classList.toggle("open");
+    }
+  </script>
+
+  <button class="open-btn" onclick="toggleDrawer()">Países atualmente</button>
+  <div id="drawer" class="drawer">
+    <button class="close-btn" onclick="toggleDrawer()">✖</button>
+    <table class="tabela">
+      <tr>
+        <td>1. Brasil</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>2. EUA</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>3. China</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>4. Índia</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>5. Turquia</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>6. Canada</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>7. Portugal</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>8. Alemanha</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>9. Russia</td>
+      </tr>
+    </table>
+    <table class="tabela">
+      <tr>
+        <td>10. Reino Unido</td>
+      </tr>
+    </table>
+  </div>
+
+  <amp-auto-ads type="adsense" data-ad-client="ca-pub-9193734213795327">
   </amp-auto-ads>
 
   <h2>Little Maps</h2>
@@ -198,19 +338,12 @@
   <button onclick="pesquisar()">Pesquisar</button>
 
   <table class="tabela1">
-    <tr><td><strong>Países:</strong></td></tr>
+    <tr>
+      <td><strong>Países:</strong></td>
+    </tr>
   </table>
 
-  <table class="tabela"><tr><td>1. Brasil</td></tr></table>
-  <table class="tabela"><tr><td>2. EUA</td></tr></table>
-  <table class="tabela"><tr><td>3. China</td></tr></table>
-  <table class="tabela"><tr><td>4. Índia</td></tr></table>
-  <table class="tabela"><tr><td>5. Turquia</td></tr></table>
-  <table class="tabela"><tr><td>6. Canada</td></tr></table>
-  <table class="tabela"><tr><td>7. Portugal</td></tr></table>
-  <table class="tabela"><tr><td>8. Alemanha</td></tr></table>
-  <table class="tabela"><tr><td>9. Russia</td></tr></table>
-  <table class="tabela"><tr><td>10. Reino Unido</td></tr></table>
+
 
   <h1 id="brasil">1. Brasil</h1>
   <img src="brasilmap.png" alt="Mapa do Brasil" title="Mapa do Brasil" />
@@ -231,11 +364,11 @@
   <h1 id="turquia">5. Turquia</h1>
   <img src="Untitled195_20240403003114.webp" alt="Mapa da Turquia" title="Mapa da Turquia" />
   <a href="Untitled195_20240403003114.webp" download class="download-link">Download</a>
-  
+
   <h1 id="canada">6. Canada</h1>
   <img src="Flag_map_of_Canada.webp" alt="Mapa do Canada" title="Mapa do Canada" />
   <a href="Flag_map_of_Canada.webp" download class="download-link">Download</a>
-  
+
   <h1 id="portugal">7. Portugal</h1>
   <img src="Untitled472_20240918153647.webp" alt="Mapa de Portugal" title="Mapa de Portugal" />
   <a href="Untitled472_20240918153647.webp" download class="download-link">Download</a>
@@ -246,12 +379,13 @@
 
   <h1 id="russia">9. Russia</h1>
   <img src="russia.webp" alt="Mapa da Russia" title="Mapa da Russia" />
-  <a href="russia.webp" download class="download-link">Download</a>    
+  <a href="russia.webp" download class="download-link">Download</a>
 
   <h1 id="reino unido">10. Reino Unido</h1>
   <img src="reino unido.webp" alt="Mapa do Reino Unido" title="Mapa do Reino Unido" />
-  <a href="reino unido.webp" download class="download-link">Download</a>  
-  
+  <a href="reino unido.webp" download class="download-link">Download</a>
+  <h1>Mais Países em Breve...</h1>
+
   <footer>
     Site criado em: 13 de Junho de 2025
   </footer>
@@ -287,5 +421,12 @@
     }
   </script>
 
+
+
+
+
+
+
 </body>
+
 </html>
