@@ -18,20 +18,24 @@
 
   <style>
     .Pomba {
-      position: fixed;
-      top: 20px;
+      
+position: fixed;
+       top: 20px;
       left: 20px;
-      background-color: #40ff00;
+     background-color: #39ff14;
+      border: none;
+      padding: 2px 30px;
+      font-weight: 500;
+      font-size: 18px;
+      border-radius: 14px;
       color: #000;
-      padding: 0px 14px;
-      font-weight: 700;
-      font-size: 14px;
-      border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      z-index: 1000;
-      text-decoration: none;
-      box-shadow: 0 0 10px #39ff14;
+      margin-bottom: 30px;
+      display: block;
+      user-select: none;
+      width: 32px;
+      max-width: 90vw;
     }
 
     .Pomba:hover {
@@ -179,8 +183,8 @@
     .open-btn {
       background-color: #39ff14;
       border: none;
-      padding: 0px 14px;
-      font-weight: 700;
+      padding: 02px 30px;
+      font-weight: 00;
       font-size: 18px;
       border-radius: 14px;
       color: #000;
@@ -189,7 +193,7 @@
       margin-bottom: 30px;
       display: block;
       user-select: none;
-      width: 170px;
+      width: 32px;
       max-width: 90vw;
     }
 
@@ -326,7 +330,7 @@
     }
   </script>
 
-  <button class="open-btn" onclick="toggleDrawer()">👀Países</button>
+  <button class="open-btn" onclick="toggleDrawer()">👀</button>
   <div id="drawer" class="drawer">
     <button class="close-btn" onclick="toggleDrawer()">✖</button>
     <table class="tabela">
@@ -386,7 +390,7 @@
 
   <h2>Little Maps</h2>
   <h2><a href="index emojis.html">
-      <button class="Pomba">🙂Emojis Mapper</button>
+      <button class="Pomba">🙂</button>
     </a></h2>
 
   <input type="text" id="campo-pesquisa" placeholder="Pesquisar país..." />
