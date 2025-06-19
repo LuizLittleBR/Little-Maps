@@ -10,33 +10,33 @@
 
   <title>Little Maps</title>
 
-  
+
 
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9193734213795327"
     crossorigin="anonymous"></script>
 
   <style>
-
     .Pomba {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background-color: #40ff00;
-  color: #000;
-  padding: 0px 14px;
-  font-weight: 700;
-  font-size: 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-  text-decoration: none;
-  box-shadow: 0 0 10px #39ff14;
-}
-.Pomba:hover {
-  background-color: #2cca00;
-}
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #40ff00;
+      color: #000;
+      padding: 0px 14px;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+      text-decoration: none;
+      box-shadow: 0 0 10px #39ff14;
+    }
+
+    .Pomba:hover {
+      background-color: #2cca00;
+    }
 
     /* Reset básico */
     * {
@@ -53,7 +53,7 @@
       background: #39ff14;
       color: #000;
       border: none;
-      padding: 10px 15px;
+      padding: 0px 14px;
       border-radius: 8px;
       cursor: pointer;
       z-index: 998;
@@ -96,12 +96,12 @@
 
     .close-btn {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 5px;
+      left: 65px;
       background: #2cca00;
       color: #000;
       border: none;
-      padding: 5px 8px;
+      padding: 0px 14px;
       border-radius: 4px;
       cursor: pointer;
     }
@@ -158,7 +158,7 @@
       background: #0c1b00;
     }
 
-    .Abobora , .close-btn , .open-btn {
+    .Abobora {
       background-color: #39ff14;
       border: none;
       padding: 12px 25px;
@@ -172,6 +172,24 @@
       display: block;
       user-select: none;
       width: 320px;
+      max-width: 90vw;
+    }
+
+    .close-btn,
+    .open-btn {
+      background-color: #39ff14;
+      border: none;
+      padding: 0px 14px;
+      font-weight: 700;
+      font-size: 18px;
+      border-radius: 14px;
+      color: #000;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 30px;
+      display: block;
+      user-select: none;
+      width: 170px;
       max-width: 90vw;
     }
 
@@ -308,7 +326,7 @@
     }
   </script>
 
-  <button class="open-btn" onclick="toggleDrawer()">Países atualmente</button>
+  <button class="open-btn" onclick="toggleDrawer()">👀Países</button>
   <div id="drawer" class="drawer">
     <button class="close-btn" onclick="toggleDrawer()">✖</button>
     <table class="tabela">
@@ -368,17 +386,13 @@
 
   <h2>Little Maps</h2>
   <h2><a href="index emojis.html">
-  <button class="Pomba">Emojis Mapper</button>
+      <button class="Pomba">🙂Emojis Mapper</button>
     </a></h2>
 
   <input type="text" id="campo-pesquisa" placeholder="Pesquisar país..." />
   <button class="Abobora" onclick="pesquisar()">Pesquisar</button>
 
-  <table class="tabela1">
-    <tr>
-      <td><strong>Países:</strong></td>
-    </tr>
-  </table>
+
 
 
 
