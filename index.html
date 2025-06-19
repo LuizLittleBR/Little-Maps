@@ -10,10 +10,34 @@
 
   <title>Little Maps</title>
 
+  
+
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9193734213795327"
     crossorigin="anonymous"></script>
 
   <style>
+
+    .Pomba {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #40ff00;
+  color: #000;
+  padding: 0px 14px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+  text-decoration: none;
+  box-shadow: 0 0 10px #39ff14;
+}
+.Pomba:hover {
+  background-color: #2cca00;
+}
+
     /* Reset básico */
     * {
       margin: 0;
@@ -104,6 +128,16 @@
       user-select: none;
     }
 
+    a {
+      font-size: 1rem;
+      color: #000000;
+      text-align: center;
+      font-weight: 900;
+      text-shadow: 0 0 8px #39ff14;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
     input[type="text"] {
       width: 320px;
       max-width: 90vw;
@@ -124,7 +158,7 @@
       background: #0c1b00;
     }
 
-    button {
+    .Abobora , .close-btn , .open-btn {
       background-color: #39ff14;
       border: none;
       padding: 12px 25px;
@@ -333,9 +367,10 @@
   </amp-auto-ads>
 
   <h2>Little Maps</h2>
+  <button class="Pomba"><h2><a href="index 1.1 emojis.html">Emojis Mapper</a></h2></button>
 
   <input type="text" id="campo-pesquisa" placeholder="Pesquisar país..." />
-  <button onclick="pesquisar()">Pesquisar</button>
+  <button class="Abobora" onclick="pesquisar()">Pesquisar</button>
 
   <table class="tabela1">
     <tr>
@@ -391,7 +426,7 @@
   </footer>
 
   <footer>
-    Versão 1.1 – Última atualização: 14 de Junho de 2025
+    Versão 1.2 – Última atualização: 19 de Junho de 2025
   </footer>
 
   <script>
