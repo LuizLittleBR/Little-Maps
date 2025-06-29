@@ -4,483 +4,541 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-adsense-account" content="ca-pub-9193734213795327">
-
-
-
+  <meta name="description" content="Baixe mapas de países como Brasil, EUA, China, Índia e mais." />
+  <meta name="google-adsense-account" content="ca-pub-9193734213795327" />
   <title>Little Maps</title>
 
-
-
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9193734213795327"
-    crossorigin="anonymous"></script>
-
   <style>
-    .Pomba {
-      
-position: fixed;
-       top: 20px;
-      left: 20px;
-     background-color: #39ff14;
-      border: none;
-      padding: 2px 30px;
-      font-weight: 500;
-      font-size: 18px;
-      border-radius: 14px;
-      color: #000;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-bottom: 30px;
-      display: block;
-      user-select: none;
-      width: 32px;
-      max-width: 90vw;
+
+    h1 {
+  font-size: 1.0rem; /* pequeno e suave */
+  font-weight: 700;
+  color: #3ffff5;
+  text-align: center;
+  text-shadow:
+    0 0 3px #78ffd7,
+    0 0 6px #3fff95;
+  margin: 20px 0 15px 0;
+  user-select: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+}
+
+    input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid var(--verde);
+  background-color: #051100; /* fundo escuro mesmo */
+  color: #b6ffb6 !important; /* verde claro forte */
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+input[type="text"]::placeholder {
+  color: #76ff76 !important; /* cor do placeholder */
+  opacity: 1; /* força ele a ficar visível */
+}
+
+
+    #menu-topo {
+      position: sticky;
+      top: 0;
+      background-color: #051100cc;
+      /* fundo semi-transparente */
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      z-index: 999;
+      backdrop-filter: blur(4px);
+      border-bottom: 2px solid var(--verde);
+      text-decoration: none;
+    }
+    #menu-topo .btn-link {
+  text-decoration: none !important;
+}
+
+
+    :root {
+      --verde: #39ff14;
+      --verde-escuro: #2cca00;
+      --texto: #030303;
+      --fundo: #051100;
+      --sombra: 0 0 12px var(--verde);
     }
 
-    .Pomba:hover {
-      background-color: #2cca00;
-    }
-
-    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-
-    .open-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #39ff14;
-      color: #000;
-      border: none;
-      padding: 0px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 998;
-      /* Menor que a gaveta */
-    }
-
-    .drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 0;
-      height: 100vh;
-      background: #051100ee;
-      overflow-x: hidden;
-      transition: width 0.4s ease;
-      box-shadow: -2px 0 12px rgba(0, 255, 0, 0.5);
-      padding-top: 60px;
-      z-index: 999;
-      /* A gaveta fica acima do botão */
-    }
-
-
-    .drawer.open {
-      width: 300px;
-    }
-
-    .drawer table {
-      width: 90%;
-      margin: 0 auto;
-      border-collapse: collapse;
-      color: #d1f2d1;
-    }
-
-    .drawer th,
-    .drawer td {
-      border-bottom: 1px solid #39ff14;
-      padding: 8px;
-      text-align: center;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 5px;
-      left: 65px;
-      background: #2cca00;
-      color: #000;
-      border: none;
-      padding: 0px 14px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-
     body {
       background: linear-gradient(135deg, #0a0a0a, #003300);
-      color: #d1f2d1;
+      color: var(--texto);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
     }
 
     h2 {
-      font-size: 3rem;
-      color: #3fff00;
-      text-align: center;
-      font-weight: 900;
-      text-shadow: 0 0 8px #39ff14;
+      font-size: 2.5rem;
+      color: var(--verde);
+      text-shadow: 0 0 8px var(--verde);
       margin-bottom: 20px;
-      user-select: none;
+      text-align: center;
     }
 
-    a {
-      font-size: 1rem;
-      color: #000000;
-      text-align: center;
-      font-weight: 900;
-      text-shadow: 0 0 8px #39ff14;
-      margin-bottom: 20px;
+    .top-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .btn {
+      background-color: var(--verde);
+      border: none;
+      color: #000;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 12px 20px;
+      transition: 0.3s;
       user-select: none;
+  text-decoration: none !important;
+
+
+    }
+
+    .btn:hover {
+      background-color: var(--verde-escuro);
+      color: #e0ffe0;
+  text-decoration: none !important;
+
+
     }
 
     input[type="text"] {
-      width: 320px;
-      max-width: 90vw;
-      padding: 12px 15px;
-      font-size: 18px;
+      width: 100%;
+      padding: 12px;
       border-radius: 12px;
-      border: 2px solid #39ff14;
-      background: #051100;
-      color: #d1f2d1;
-      outline-offset: 2px;
-      transition: border-color 0.3s ease;
-      margin-bottom: 15px;
-      display: block;
-    }
-
-    input[type="text"]:focus {
-      border-color: #7cff00;
-      background: #0c1b00;
-    }
-
-    .Abobora {
-      background-color: #39ff14;
-      border: none;
-      padding: 12px 25px;
-      font-weight: 700;
-      font-size: 18px;
-      border-radius: 14px;
-      color: #000;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-bottom: 30px;
-      display: block;
-      user-select: none;
-      width: 320px;
-      max-width: 90vw;
-    }
-
-    .close-btn,
-    .open-btn {
-      background-color: #39ff14;
-      border: none;
-      padding: 02px 30px;
-      font-weight: 00;
-      font-size: 18px;
-      border-radius: 14px;
-      color: #000;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-bottom: 30px;
-      display: block;
-      user-select: none;
-      width: 32px;
-      max-width: 90vw;
-    }
-
-    button:hover {
-      background-color: #2cca00;
-      color: #e0ffe0;
-    }
-
-    table {
-      width: 320px;
-      max-width: 90vw;
-      margin: 0 auto 15px auto;
-      border-collapse: separate;
-      border-spacing: 0 10px;
-      font-size: 18px;
-      font-weight: 600;
-      color: #c2ffc2;
-      user-select: none;
-      border-radius: 15px;
-    }
-
-    .tabela,
-    .tabela1 {
-      border-radius: 15px;
-      border: 2px solid #39ff14;
-      box-shadow: 0 0 12px #39ff14;
-      background-color: #051100cc;
-      padding: 12px 20px;
-    }
-
-    .tabela1 {
-      font-size: 22px;
-      font-weight: 900;
+      border: 2px solid var(--verde);
+      background: var(--fundo);
+      color: var(--texto);
       text-align: center;
-      margin-bottom: 25px;
-      background-color: #133500cc;
-      box-shadow: 0 0 20px #7cff00;
     }
 
-    h1 {
-      font-size: 1.8rem;
-      margin-top: 35px;
-      color: #a0ff70;
-      text-align: center;
-      font-weight: 800;
-      text-shadow: 0 0 6px #33cc00;
-      user-select: none;
+    #erro-msg {
+      color: red;
+      margin-top: 8px;
+      font-weight: bold;
+      display: none;
     }
 
-    img {
-      display: block;
-      margin: 15px auto 10px auto;
-      border: 3px solid #39ff14;
+    #todos-os-mapas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 20px;
+      padding: 10px;
+    }
+
+    .mapa {
+      background-color: #0b2200;
       border-radius: 15px;
-      box-shadow: 0 0 25px #4dff4d;
-      max-width: 90vw;
-      width: 320px;
-      height: auto;
-      transition: transform 0.3s ease;
-      cursor: pointer;
+      padding: 15px;
+      box-shadow: 0 0 10px var(--verde);
+      text-align: center;
+      transition: transform 0.3s;
     }
 
-    img:hover {
+    .mapa:hover {
+      transform: translateY(-4px);
+    }
+
+    .mapa h3 {
+      color: var(--verde);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      text-shadow: 0 0 5px var(--verde);
+    }
+
+    .mapa img {
+      width: 100%;
+      max-width: 180px;
+      border-radius: 15px;
+      border: 3px solid var(--verde);
+      box-shadow: 0 0 20px var(--verde);
+      transition: transform 0.3s;
+      margin-bottom: 10px;
+    }
+
+    .mapa img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 40px #7fff00;
     }
 
-    a.download-link {
-      display: block;
-      width: fit-content;
-      margin: 8px auto 35px auto;
-      padding: 12px 30px;
-      border-radius: 16px;
-      background-color: #39ff14;
+    .download-link {
+      display: inline-block;
+      background: var(--verde);
       color: #000;
-      font-weight: 900;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
+      font-weight: bold;
+      padding: 8px 20px;
+      border-radius: 12px;
       text-decoration: none;
-      box-shadow: 0 0 12px #39ff14;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
+      box-shadow: var(--sombra);
     }
 
-    a.download-link:hover {
-      background-color: #2baf00;
-      color: #e0ffe0;
+    .download-link:hover {
+      background-color: var(--verde-escuro);
     }
 
     footer {
-      text-align: center;
-      padding: 8px 12px;
+      margin-top: 40px;
+      padding: 10px;
       font-size: 14px;
       color: #0a0a0a;
       background-color: #a8ffa8;
-      font-weight: 700;
-      border-radius: 0 0 15px 15px;
-      width: 100%;
+      font-weight: bold;
+      border-radius: 10px;
+      box-shadow: 0 0 10px var(--verde);
       max-width: 420px;
-      margin: 30px auto 0 auto;
-      user-select: none;
-      box-shadow: 0 0 10px #7cff00;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
-    /* Responsividade básica */
-    @media (max-width: 380px) {
+    @media (max-width: 480px) {
       h2 {
-        font-size: 2.4rem;
+        font-size: 2rem;
       }
 
-      h1 {
-        font-size: 1.4rem;
+      .download-link {
+        font-size: 13px;
       }
 
-      button,
-      input[type="text"],
-      table,
-      img,
-      a.download-link {
-        width: 90vw;
-      }
+      .btn {
+        font-size: 13px;
+        padding: 10px 16px;
+        
+        text-decoration: none !important;
 
-      footer {
-        max-width: 95vw;
       }
     }
   </style>
+
 </head>
 
 <body>
-  <script>
-    function toggleDrawer() {
-      document.getElementById("drawer").classList.toggle("open");
-    }
-  </script>
+  <nav id="menu-topo">
+    <a href="index emojis.html" class="btn" aria-label="🙂 Emojis Mapper">🙂 Emojis Mapper</a>
+  </nav>
 
-  <button class="open-btn" onclick="toggleDrawer()">👀</button>
-  <div id="drawer" class="drawer">
-    <button class="close-btn" onclick="toggleDrawer()">✖</button>
-    <table class="tabela">
-      <tr>
-        <td>1. Brasil</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>2. EUA</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>3. China</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>4. Índia</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>5. Turquia</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>6. Canada</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>7. Portugal</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>8. Alemanha</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>9. Russia</td>
-      </tr>
-    </table>
-    <table class="tabela">
-      <tr>
-        <td>10. Reino Unido</td>
-      </tr>
-    </table>
-  </div>
-
-  <amp-auto-ads type="adsense" data-ad-client="ca-pub-9193734213795327">
-  </amp-auto-ads>
 
   <h2>Little Maps</h2>
-  <h2><a href="index emojis.html">
-      <button class="Pomba">🙂</button>
-    </a></h2>
+  <h1>Pesquise o nome do país certo Thomapper!</h1>
+  <div class="top-controls">
+    <input type="text" id="campo-pesquisa" placeholder="Pesquisar país..." aria-label="Campo de pesquisa" />
+    <button class="btn" onclick="pesquisar()" aria-label="Pesquisar país">🔍 Pesquisar</button>
+    <p id="erro-msg">País não encontrado.</p>
 
-  <input type="text" id="campo-pesquisa" placeholder="Pesquisar país..." />
-  <button class="Abobora" onclick="pesquisar()">Pesquisar</button>
+  </div>
 
+  <div id="todos-os-mapas">
+    <!-- MAPAS -->
+    <section class="mapa" id="ucrania">
+      <h3>1. Ucrânia</h3>
+      <img src="ucrania.png" alt="Mapa da Ucrânia" loading="lazy">
+      <a class="download-link" href="ucrania.png" download>Download</a>
+    </section>
 
+    <section class="mapa" id="japao">
+      <h3>2. Japão</h3>
+      <img src="japao.png" alt="Mapa do Japão" loading="lazy">
+      <a class="download-link" href="japao.png" download>Download</a>
+    </section>
 
+    <section class="mapa" id="dinamarca">
+      <h3>3. Dinamarca</h3>
+      <img src="dinamarca.png" alt="Mapa da Dinamarca" loading="lazy">
+      <a class="download-link" href="dinamarca.png" download>Download</a>
+    </section>
 
+    <section class="mapa" id="espanha">
+      <h3>4. Espanha</h3>
+      <img src="espanha.png" alt="Mapa da Espanha" loading="lazy">
+      <a class="download-link" href="espanha.png" download>Download</a>
+    </section>
 
-  <h1 id="brasil">1. Brasil</h1>
-  <img src="brasilmap.png" alt="Mapa do Brasil" title="Mapa do Brasil" />
-  <a href="brasilmap.png" download class="download-link">Download</a>
+    <section class="mapa" id="italia">
+      <h3>5. Itália</h3>
+      <img src="italia.png" alt="Mapa da Itália" loading="lazy">
+      <a class="download-link" href="italia.png" download>Download</a>
+    </section>
 
-  <h1 id="eua">2. Eua</h1>
-  <img src="214_Sem_Titulo_20250117222821.webp" alt="Mapa dos EUA" title="Mapa dos EUA" />
-  <a href="214_Sem_Titulo_20250117222821.webp" download class="download-link">Download</a>
+    <section class="mapa" id="alemanha">
+      <h3>6. Alemanha</h3>
+      <img src="alemanha.png" alt="Mapa da Alemanha" loading="lazy">
+      <a class="download-link" href="alemanha.png" download>Download</a>
+    </section>
 
-  <h1 id="china">3. China</h1>
-  <img src="258_20241221192232.webp" alt="Mapa da China" title="Mapa da China" />
-  <a href="258_20241221192232.webp" download class="download-link">Download</a>
+    <section class="mapa" id="franca">
+      <h3>7. França</h3>
+      <img src="frança.png" alt="Mapa da França" loading="lazy">
+      <a class="download-link" href="franca.png" download>Download</a>
+    </section>
 
-  <h1 id="india">4. Índia</h1>
-  <img src="indiamap.webp" alt="Mapa da Índia" title="Mapa da Índia" />
-  <a href="indiamap.webp" download class="download-link">Download</a>
+    <section class="mapa" id="uruguai">
+      <h3>8. Uruguai</h3>
+      <img src="uruguai.png" alt="Mapa do uruguai" loading="lazy">
+      <a class="download-link" href="uruguai.png" download>Download</a>
+    </section>
 
-  <h1 id="turquia">5. Turquia</h1>
-  <img src="Untitled195_20240403003114.webp" alt="Mapa da Turquia" title="Mapa da Turquia" />
-  <a href="Untitled195_20240403003114.webp" download class="download-link">Download</a>
+    <section class="mapa" id="sul_africa">
+      <h3>9. África do Sul</h3>
+      <img src="africa do sul.png" alt="Mapa da África do Sul" loading="lazy">
+      <a class="download-link" href="africa do sul.png" download>Download</a>
+    </section>
 
-  <h1 id="canada">6. Canada</h1>
-  <img src="Flag_map_of_Canada.webp" alt="Mapa do Canada" title="Mapa do Canada" />
-  <a href="Flag_map_of_Canada.webp" download class="download-link">Download</a>
+    <section class="mapa" id="india">
+      <h3>10. Índia</h3>
+      <img src="india.png" alt="Mapa da Índia" loading="lazy">
+      <a class="download-link" href="india.png" download>Download</a>
+    </section>
 
-  <h1 id="portugal">7. Portugal</h1>
-  <img src="Untitled472_20240918153647.webp" alt="Mapa de Portugal" title="Mapa de Portugal" />
-  <a href="Untitled472_20240918153647.webp" download class="download-link">Download</a>
+    <section class="mapa" id="colombia">
+      <h3>11. Colômbia</h3>
+      <img src="colombia.png" alt="Mapa da Colômbia" loading="lazy">
+      <a class="download-link" href="colombia.png" download>Download</a>
+    </section>
 
-  <h1 id="alemanha">8. Alemanha</h1>
-  <img src="alemanha.webp" alt="Mapa da Alemanha" title="Mapa da Alemanha" />
-  <a href="alemanha.webp" download class="download-link">Download</a>
+    <section class="mapa" id="grecia">
+      <h3>12. Grécia</h3>
+      <img src="grecia.png" alt="Mapa da Grécia" loading="lazy">
+      <a class="download-link" href="grecia.png" download>Download</a>
+    </section>
 
-  <h1 id="russia">9. Russia</h1>
-  <img src="russia.webp" alt="Mapa da Russia" title="Mapa da Russia" />
-  <a href="russia.webp" download class="download-link">Download</a>
+    <section class="mapa" id="portugal">
+      <h3>13. Portugal</h3>
+      <img src="portugal.png" alt="Mapa de Portugal" loading="lazy">
+      <a class="download-link" href="portugal.png" download>Download</a>
+    </section>
 
-  <h1 id="reino unido">10. Reino Unido</h1>
-  <img src="reino unido.webp" alt="Mapa do Reino Unido" title="Mapa do Reino Unido" />
-  <a href="reino unido.webp" download class="download-link">Download</a>
-  <h1>Mais Países em Breve...</h1>
+    <section class="mapa" id="brasil">
+      <h3>14. Brasil</h3>
+      <img src="brasil.png" alt="Mapa do Brasil" loading="lazy">
+      <a class="download-link" href="brasil.png" download>Download</a>
+    </section>
 
-  <footer>
-    Site criado em: 13 de Junho de 2025
-  </footer>
+    <section class="mapa" id="ira">
+      <h3>15. Irã</h3>
+      <img src="ira.png" alt="Mapa do Irã" loading="lazy">
+      <a class="download-link" href="ira.png" download>Download</a>
+    </section>
 
-  <footer>
-    Versão 1.2 – Última atualização: 19 de Junho de 2025
-  </footer>
+    <section class="mapa" id="coreia_do_sul">
+      <h3>16. Coreia do Sul</h3>
+      <img src="coreia do sul.png" alt="Mapa da Coreia do Sul" loading="lazy">
+      <a class="download-link" href="coreia do sul.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="israel">
+      <h3>17. Israel</h3>
+      <img src="israel.png" alt="Mapa de Israel" loading="lazy">
+      <a class="download-link" href="israel.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="servia">
+      <h3>18. Sérvia</h3>
+      <img src="servia.png" alt="Mapa da Sérvia" loading="lazy">
+      <a class="download-link" href="servia.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="paquistao">
+      <h3>19. Paquistão</h3>
+      <img src="paquistao.png" alt="Mapa do Paquistão" loading="lazy">
+      <a class="download-link" href="paquistao.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="bangladesh">
+      <h3>20. Bangladesh</h3>
+      <img src="bangladesh.png" alt="Mapa de Bangladesh" loading="lazy">
+      <a class="download-link" href="bangladesh.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="nigeria">
+      <h3>21. Nigéria</h3>
+      <img src="nigeria.png" alt="Mapa da Nigéria" loading="lazy">
+      <a class="download-link" href="nigeria.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="australia">
+      <h3>22. Austrália</h3>
+      <img src="australia.png" alt="Mapa da Austrália" loading="lazy">
+      <a class="download-link" href="australia.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="russia">
+      <h3>23. Rússia</h3>
+      <img src="russia.png" alt="Mapa da Rússia" loading="lazy">
+      <a class="download-link" href="russia.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="estados unidos">
+      <h3>24. Estados Unidos</h3>
+      <img src="estados unidos.png" alt="Mapa do Estados Unidos" loading="lazy">
+      <a class="download-link" href="estados unidos.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="reino unido">
+      <h3>25. Reino Unido</h3>
+      <img src="reino unido.png" alt="Mapa do Reino Unido" loading="lazy">
+      <a class="download-link" href="reino unido.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="turquia">
+      <h3>26. Turquia</h3>
+      <img src="turquia.png" alt="Mapa da Turquia" loading="lazy">
+      <a class="download-link" href="turquia.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="hong kong">
+      <h3>27. Hong Kong</h3>
+      <img src="hong kong.png" alt="Mapa de Hong Kong" loading="lazy">
+      <a class="download-link" href="hong kong.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="suiça">
+      <h3>28. Suiça</h3>
+      <img src="suiça.png" alt="Mapa da Suiça" loading="lazy">
+      <a class="download-link" href="suiça.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="polonia">
+      <h3>29. Polonia</h3>
+      <img src="polonia.png" alt="Mapa da Polonia" loading="lazy">
+      <a class="download-link" href="polonia.png" download>Download</a>
+    </section>
+
+    <section class="mapa" id="mexico">
+      <h3>30. México</h3>
+      <img src="mexico.png" alt="Mapa do México" loading="lazy">
+      <a class="download-link" href="mexico.png" download>Download</a>
+    </section>
+
+  </div>
+
+  <h2>Mais países em breve...</h2>
+
+  <footer>Site criado em: 13 de Junho de 2025</footer>
+  <footer>Versão 2.0 – Última atualização: 29 de Junho de 2025</footer>
+  <footer>Adiconado 30 países novos e mudanças no site.</footer>
 
   <script>
-    function pesquisar() {
-      const termo = document.getElementById("campo-pesquisa").value.toLowerCase().trim();
-      const ids = {
-        "brasil": "brasil",
-        "eua": "eua",
-        "estados unidos": "eua",
-        "china": "china",
-        "índia": "india",
-        "india": "india",
-        "turquia": "turquia",
-        "canada": "canada",
-        "portugal": "portugal",
-        "alemanha": "alemanha",
-        "russia": "russia",
-        "reino unido": "reino unido"
-      };
+  const campo = document.getElementById("campo-pesquisa");
+  const erroMsg = document.getElementById("erro-msg");
 
-      const destino = ids[termo];
-      if (destino) {
-        document.getElementById(destino).scrollIntoView({ behavior: "smooth" });
-      } else {
-        alert("País não encontrado.");
+  campo.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") pesquisar();
+  });
+
+  function pesquisar() {
+    const termo = campo.value.toLowerCase().trim();
+    const mapas = document.querySelectorAll(".mapa");
+
+    let encontrado = false;
+
+    mapas.forEach((mapa) => {
+      const nomePais = mapa.querySelector("h3").innerText.toLowerCase();
+
+      if (nomePais.includes(termo)) {
+        erroMsg.style.display = "none";
+        mapa.scrollIntoView({ behavior: "smooth", block: "center" });
+        encontrado = true;
       }
+    });
+
+    if (!encontrado) {
+      erroMsg.style.display = "block";
+      setTimeout(() => erroMsg.style.display = "none", 3000);
     }
-  </script>
+  }
+
+  function pesquisar() {
+  const termo = campo.value.toLowerCase().trim();
+  const mapas = document.querySelectorAll(".mapa");
+
+  if (termo === "") {
+    erroMsg.innerText = "Digite um país antes de pesquisar.";
+    erroMsg.style.display = "block";
+    setTimeout(() => erroMsg.style.display = "none", 3000);
+    return;
+  }
+
+  let encontrado = false;
+
+  mapas.forEach((mapa) => {
+    const nomePais = mapa.querySelector("h3").innerText.toLowerCase();
+
+    if (nomePais.includes(termo)) {
+      erroMsg.style.display = "none";
+      mapa.scrollIntoView({ behavior: "smooth", block: "center" });
+      encontrado = true;
+    }
+  });
+
+  if (!encontrado) {
+    erroMsg.innerText = "País não encontrado.";
+    erroMsg.style.display = "block";
+    setTimeout(() => erroMsg.style.display = "none", 3000);
+  }
+}
+
+if (nomePais.startsWith(termo))
+
+function pesquisar() {
+  const termo = campo.value.toLowerCase().trim();
+  const mapas = document.querySelectorAll(".mapa");
+
+  if (termo === "") {
+    erroMsg.innerText = "Digite um país antes de pesquisar.";
+    erroMsg.style.display = "block";
+    setTimeout(() => erroMsg.style.display = "none", 3000);
+    return;
+  }
+
+  let encontrado = false;
+
+  for (const mapa of mapas) {
+    const nomePais = mapa.querySelector("h3").innerText.toLowerCase();
+
+    if (nomePais.startsWith(termo)) {
+      erroMsg.style.display = "none";
+      mapa.scrollIntoView({ behavior: "smooth", block: "center" });
+      encontrado = true;
+      break; // parou no primeiro encontrado
+    }
+  }
+
+  if (!encontrado) {
+    erroMsg.innerText = "País não encontrado.";
+    erroMsg.style.display = "block";
+    setTimeout(() => erroMsg.style.display = "none", 3000);
+  }
+}
 
 
 
-
-
-
+</script>
 
 </body>
 
